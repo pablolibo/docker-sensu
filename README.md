@@ -7,6 +7,7 @@ Docker and Sensu (big friends)
 
 ## client
 
+```json
 client
   image: pablolibo/sensu-docker:1.0.0-1
   environment:
@@ -24,3 +25,4 @@ client
   ports:
     - '3030:3030'
   command: client
+```
