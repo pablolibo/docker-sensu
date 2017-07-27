@@ -82,6 +82,7 @@ RUN /opt/sensu/bin/sensu-install -p disk-checks
 RUN /opt/sensu/bin/sensu-install -p load-checks
 RUN /opt/sensu/bin/sensu-install -p http
 RUN /opt/sensu/bin/sensu-install -p memory-checks
+RUN /opt/sensu/bin/sensu-install -p haproxy
 
 
 EXPOSE 4567
