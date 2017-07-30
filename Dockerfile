@@ -83,6 +83,9 @@ RUN /opt/sensu/bin/sensu-install -p load-checks
 RUN /opt/sensu/bin/sensu-install -p http
 RUN /opt/sensu/bin/sensu-install -p memory-checks
 RUN /opt/sensu/bin/sensu-install -p haproxy
+RUN /opt/sensu/bin/sensu-install -p slack
+RUN /opt/sensu/bin/sensu-install -p pingdom
+RUN /opt/sensu/bin/sensu-install -p pagerduty
 
 
 EXPOSE 4567
