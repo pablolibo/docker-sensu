@@ -86,6 +86,7 @@ RUN /opt/sensu/bin/sensu-install -p haproxy
 RUN /opt/sensu/bin/sensu-install -p slack
 RUN /opt/sensu/bin/sensu-install -p pingdom
 RUN /opt/sensu/bin/sensu-install -p pagerduty
+RUN /opt/sensu/bin/sensu-install -p mailer
 
 
 EXPOSE 4567
