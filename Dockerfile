@@ -77,10 +77,11 @@ ENV DEFAULT_PLUGINS_REPO=sensu-plugins \
 RUN mkdir -p $CONFIG_DIR $CHECK_DIR $EXTENSION_DIR $PLUGINS_DIR $HANDLERS_DIR
 
 #PagerDuty (https://www.pagerduty.com/docs/guides/agent-install-guide/)
-RUN wget -O - https://packages.pagerduty.com/GPG-KEY-pagerduty | sudo apt-key add -
-RUN sudo sh -c 'echo "deb https://packages.pagerduty.com/pdagent deb/" >/etc/apt/sources.list.d/pdagent.list'
-RUN sudo apt-get update
-RUN sudo apt-get install pdagent pdagent-integrations
+RUN \
+    wget -O - https://packages.pagerduty.com/GPG-KEY-pagerduty | sudo apt-key add - &&\
+    echo "deb https://packages.pagerduty.com/pdagent deb/" >/etc/apt/sources.list.d/pdagent.list &&\
+    apt-get update &&\
+    apt-get install pdagent pdagent-integrations
 
 #Plugins
 RUN apt-get update && apt-get install build-essential -y
