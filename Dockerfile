@@ -76,6 +76,12 @@ ENV DEFAULT_PLUGINS_REPO=sensu-plugins \
 
 RUN mkdir -p $CONFIG_DIR $CHECK_DIR $EXTENSION_DIR $PLUGINS_DIR $HANDLERS_DIR
 
+#PagerDuty (https://www.pagerduty.com/docs/guides/agent-install-guide/)
+RUN wget -O - https://packages.pagerduty.com/GPG-KEY-pagerduty | sudo apt-key add -
+RUN sudo sh -c 'echo "deb https://packages.pagerduty.com/pdagent deb/" >/etc/apt/sources.list.d/pdagent.list'
+RUN sudo apt-get update
+RUN sudo apt-get install pdagent pdagent-integrations
+
 #Plugins
 RUN apt-get update && apt-get install build-essential -y
 RUN /opt/sensu/bin/sensu-install -p disk-checks
@@ -85,7 +91,6 @@ RUN /opt/sensu/bin/sensu-install -p memory-checks
 RUN /opt/sensu/bin/sensu-install -p haproxy
 RUN /opt/sensu/bin/sensu-install -p slack
 RUN /opt/sensu/bin/sensu-install -p pingdom
-RUN /opt/sensu/bin/sensu-install -p pagerduty
 RUN /opt/sensu/bin/sensu-install -p mailer
 
 
