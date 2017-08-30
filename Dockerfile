@@ -78,10 +78,10 @@ RUN mkdir -p $CONFIG_DIR $CHECK_DIR $EXTENSION_DIR $PLUGINS_DIR $HANDLERS_DIR
 
 #PagerDuty (https://www.pagerduty.com/docs/guides/agent-install-guide/)
 RUN \
-    wget -O - https://packages.pagerduty.com/GPG-KEY-pagerduty | sudo apt-key add - &&\
+    curl https://packages.pagerduty.com/GPG-KEY-pagerduty | apt-key add - &&\
     echo "deb https://packages.pagerduty.com/pdagent deb/" >/etc/apt/sources.list.d/pdagent.list &&\
     apt-get update &&\
-    apt-get install pdagent pdagent-integrations
+    apt-get install pdagent pdagent-integrations -y
 
 #Plugins
 RUN apt-get update && apt-get install build-essential -y
