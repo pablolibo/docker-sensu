@@ -94,6 +94,7 @@ RUN /opt/sensu/bin/sensu-install -p slack
 RUN /opt/sensu/bin/sensu-install -p pingdom
 RUN /opt/sensu/bin/sensu-install -p mailer
 RUN /opt/sensu/bin/sensu-install -p sensu-plugins-pagerduty
+RUN /opt/sensu/bin/sensu-install -p elasticsearch
 
 EXPOSE 4567
 VOLUME ["/etc/sensu/conf.d"]
